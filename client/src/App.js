@@ -8,7 +8,6 @@ import Queue from './pages/Queue'
 import Favorites from './pages/Favorites';
 import './app.css';
 
-
 import React from 'react';
 
 
@@ -16,8 +15,10 @@ import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
+require('dotenv').config()
+
 //this key is showing up just fine
-console.log(process.env.REACT_APP_TMD_API_KEY)
+//console.log(process.env.REACT_APP_TMD_API_KEY)
 
 
 const client = new ApolloClient({
@@ -26,11 +27,11 @@ const client = new ApolloClient({
 
     operation.setContext({
       headers: {
-        authorization: token ? `Bearer ${token}` : ''
+        authorization: token ? `Bearer ${token}` : '' 
       }
     })
   },
-  uri: 'http://localhost:3001/graphql'
+  uri: "/graphql"
 });
 
 function App() {
@@ -39,7 +40,6 @@ function App() {
     <Router>
         <>
           <Nav />
-          {/*TODO: secure routes so you can only access certain ones if logged in */}
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />

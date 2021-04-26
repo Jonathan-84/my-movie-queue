@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MovieDisplay from '../components/MovieDisplay';
 import $ from 'jquery'
 
+
 class Movie extends Component {
 
     constructor(props) {
@@ -11,10 +12,16 @@ class Movie extends Component {
         // Fetch data from moviedb API
         this.performSearch("")
         }
+
+        
+
         performSearch(searchMovie){
             // Use Ajax to use async calls to fetch data from web 
             // replace "search" with "discover" for random selection
-            const urlApi = "https://api.themoviedb.org/3/search/movie?api_key=8e3897289a2060fb320a0796b9783df4&query=" + searchMovie;
+            const api_key = process.env.REACT_APP_TMD_API_KEY;
+            const baseUrl = 'https://api.themoviedb.org/3/';
+            
+            const urlApi = `${baseUrl}search/movie?api_key=${api_key}&query=${searchMovie}` ;
             $.ajax({
                 url: urlApi,
                 success: (searchResults) => {
