@@ -1,5 +1,5 @@
 {
-	"name": "my-movie-queue",
+	"name": "my-movie-q",
 	"description": "",
 	"version": "1.0.0",
 	"main": "server/server.js",
