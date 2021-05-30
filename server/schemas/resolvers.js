@@ -42,30 +42,30 @@ const resolvers = {
       return { token, user };
     },
 
-    savedMovie: async (parent, args, context) => {
+    savedMovie: async (parent, {input}, context) => {
       if (context.user) {
         console.log(context.user);
-        console.log(args);
+        console.log(input);
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedMovie: args.input } },
+          { $addToSet: { savedMovie: input } },
           { new: true }
         );
         return updatedUser;
       }
       throw new AuthenticationError("Please log in!");
     },
-    removeMovie: async (parent, args, context) => {
+    removeMovie: async (parent, {movieId}, context) => {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedMovie: { movie_id: args.movieId } } },
+          { $pull: { savedMovie: { movie_id: movieId }} },
           { new: true }
         );
         return updatedUser;
       }
       throw new AuthenticationError("Please log in!");
-    },
-  },
-};
+    }
+  }
+}
 module.exports = resolvers;

@@ -32,6 +32,8 @@ export const SAVE_MOVIE = gql`
       movieCount
       savedMovies {
         movieId
+        title 
+        overview
       }
     }
   }
@@ -46,6 +48,8 @@ export const REMOVE_MOVIE = gql`
       movieCount
       savedMovies {
         movieId
+        title 
+        overview
       }
     }
   }

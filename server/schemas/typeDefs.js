@@ -9,8 +9,8 @@ const typeDefs = gql`
   }
   type User {
     _id: ID
-    username: String
-    email: String
+    username: String!
+    email: String!
     movieCount: Int
     savedMovie: [Movie]
   }

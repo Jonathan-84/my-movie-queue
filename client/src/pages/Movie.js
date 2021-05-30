@@ -49,6 +49,7 @@ class Movie extends Component {
         const searchMovie = e.target.value
         this.performSearch(searchMovie)
     }
+    
 
     render() {
         return (
