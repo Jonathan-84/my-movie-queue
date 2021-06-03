@@ -6,7 +6,7 @@ This application aims to solve that by creating a one stop movie source for ever
 
 The application allows users to search movies and find information about them. Due to time and scheduling constraints, my team was unable to add all the intended features. 
 
-So Coming Soon: There will be the ability save to 3 lists (Watched, Gotta Watch, My Movie Shelf). Additionally I will add more information directly to the movie profile.
+So Coming Soon: There will be the ability save to 3 lists (Watched, Gotta Watch, My Movie Shelf). Additionally I will add more information directly to the movie profile as well as gamification components (badges based on number of movies watched and owned etc).
 
 Understanding the many ways to adjust or add to this project, we elected to go with the flexibility and scalability that React, Express, Node.JS, MongoDB, GraphQL offered. Due to the ease of use and documentation, we selected The Movie Database API for our main information source. 
 
