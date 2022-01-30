@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from './components/Nav'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Demo from './pages/DemoLogin'
 import Signup from './pages/Signup'
 import Queue from './pages/Queue'
 import Favorites from './pages/Favorites';
@@ -46,6 +47,7 @@ function App() {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/queue" component={Queue} />
             <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/demo" component={Demo} />
             <Route render={() => <h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
           </Switch>
         </>

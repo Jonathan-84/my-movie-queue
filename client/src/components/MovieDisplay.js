@@ -3,13 +3,16 @@ import Auth from '../utils/auth';
 
 //import { Button } from 'react-bootstrap';
 
+
+
 class MovieDisplay extends Component {
-    watchTrailer() {
+    viewSite() {
         console.log('this is connected')
         const url = "https://www.themoviedb.org/movie/" + this.props.movie.id 
         window.location.href = url
         console.log(window.location.href)
     }
+
 
     watchlistAlert=()=>{
       alert('Add to Watchlist is a Coming Attraction!');
@@ -22,7 +25,10 @@ class MovieDisplay extends Component {
     }
 
     render() {
-        return<table key={this.props.movie.id}>
+
+      
+        return (
+        <table key={this.props.movie.id}>
         <tbody>
             <tr className="movie-container text-center">
                 <td>
@@ -41,7 +47,8 @@ class MovieDisplay extends Component {
                     <li  className="queue-button text-light" onClick={this.favoritesAlert}>Add to My Favorites!</li>
                      {/*} <li><a href="#">Save to My Movie Shelf</a></li>{*/}
                     </ul>
-                    <input className="btn queue-button text-light" type="playTrailer" onClick={this.watchTrailer.bind(this)} value="More Info"/>
+                    <input className="btn queue-button text-light" type="viewSite" onClick={this.viewSite.bind(this)} value="More Info"/>
+                    <input className="btn queue-button text-light" type="viewTrailer" onClick={this.viewTrailer.bind(this)} value="Trailer"/>
                   </div>
                /*} <>
                   <Button className='btn-block btn-info'> Save to Watchlist</Button>
@@ -49,12 +56,13 @@ class MovieDisplay extends Component {
                   <input type="playTrailer" onClick={this.watchTrailer.bind(this)} value="Play trailer"/>
                 </>{*/
               ) : (
-                <input className="btn queue-button text-light" type="playTrailer" onClick={this.watchTrailer.bind(this)} value="More Info"/>
+                <input className="btn queue-button text-light" type="viewSite" onClick={this.viewSite.bind(this)} value="More Info"/>
               )}
                 </tr>
         </tbody>
     </table>
-    }
+        )
+      }
 }
 
 export default MovieDisplay
