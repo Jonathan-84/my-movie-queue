@@ -48,7 +48,7 @@ class MovieDisplay extends Component {
                      {/*} <li><a href="#">Save to My Movie Shelf</a></li>{*/}
                     </ul>
                     <input className="btn queue-button text-light" type="viewSite" onClick={this.viewSite.bind(this)} value="More Info"/>
-                    <input className="btn queue-button text-light" type="viewTrailer" onClick={this.viewTrailer.bind(this)} value="Trailer"/>
+                  {/* <input className="btn queue-button text-light" type="viewTrailer" onClick={this.viewTrailer.bind(this)} value="Trailer"/>*/}
                   </div>
                /*} <>
                   <Button className='btn-block btn-info'> Save to Watchlist</Button>
