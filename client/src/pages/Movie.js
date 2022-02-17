@@ -55,12 +55,12 @@ class Movie extends Component {
         return (
             <>
             <div className="input-group">
-                <input type="search" 
+                <input id='search' type="search-input" 
                     className="form-control rounded searchbar" 
                     onChange={this.searchChangeHandler.bind(this)} placeholder="Search for movies..." 
                     aria-label="Search"
                     aria-describedby="search-addon" />
-            <button type="button" className="btn btn-outline orange-button">Search</button>
+            <button id='search'  type="button" className="btn btn-outline orange-button">Search</button>
             </div>
             <div className="Test">
                 {this.state.rows}

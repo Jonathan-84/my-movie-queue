@@ -1,6 +1,6 @@
 
-/*  Basic website works for vice. need to find how I want to make it appear
-
+//  Basic website works for vice. need to find how I want to make it appear
+/*
 import React, {Component} from 'react';
 
  const api_key = process.env.REACT_APP_TMD_API_KEY;
@@ -14,7 +14,7 @@ import React, {Component} from 'react';
             this.state = { 
               trailer: [],
               type: [],
-           
+           /*
             
              
     
@@ -40,8 +40,8 @@ import React, {Component} from 'react';
 
     return (
       <>
-      <h1 className="display-4 text-center border-bottom border-warning">MarsWeather</h1>
-      <p className="text-md-center text-sm-left m-3"> Check it out.
+      <h1 className="display-4 text-center border-bottom border-warning">Movies</h1>
+      <p className="text-md-center text-sm-left m-3"> Look at it.
         </p>
 
 

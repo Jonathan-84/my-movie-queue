@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import Auth from '../utils/auth';
 
-//import { Button } from 'react-bootstrap';
-
 
 
 class MovieDisplay extends Component {
-    viewSite() {
-        console.log('this is connected')
-        const url = "https://www.themoviedb.org/movie/" + this.props.movie.id 
-        window.location.href = url
-        console.log(window.location.href)
+
+
+    viewTrailer() {
+      const api_key = process.env.REACT_APP_TMD_API_KEY;
+      const trailerURL= this.props.movie.id;
+      console.log(trailerURL)
+console.log(api_key)
+      //const trailerURL= "https://api.themoviedb.org/3/movie/ + this.props.movie.id + "/videos?api_key=" + api_key + "&language=en-US"
+     //console.log(trailerURL)
     }
 
 
@@ -45,9 +47,10 @@ class MovieDisplay extends Component {
                     <ul className="dropdown-menu queue-button">
                     <li  className="queue-button text-light" onClick={this.watchlistAlert}>Add to Watchlist!</li>
                     <li  className="queue-button text-light" onClick={this.favoritesAlert}>Add to My Favorites!</li>
+                    <li  className="queue-button text-light" onClick={this.viewTrailer}>Watch Trailer!</li>
                      {/*} <li><a href="#">Save to My Movie Shelf</a></li>{*/}
                     </ul>
-                    <input className="btn queue-button text-light" type="viewSite" onClick={this.viewSite.bind(this)} value="More Info"/>
+                    <input className="btn queue-button text-light" href="https://www.themoviedb.org/movie/ + this.props.movie.id" value="More Info"/>
                   {/* <input className="btn queue-button text-light" type="viewTrailer" onClick={this.viewTrailer.bind(this)} value="Trailer"/>*/}
                   </div>
                /*} <>
@@ -56,7 +59,7 @@ class MovieDisplay extends Component {
                   <input type="playTrailer" onClick={this.watchTrailer.bind(this)} value="Play trailer"/>
                 </>{*/
               ) : (
-                <input className="btn queue-button text-light" type="viewSite" onClick={this.viewSite.bind(this)} value="More Info"/>
+                <input className="btn queue-button text-light" href="https://www.themoviedb.org/movie/ + this.props.movie.id" value="More Info"/>
               )}
                 </tr>
         </tbody>
