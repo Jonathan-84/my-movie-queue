@@ -8,6 +8,7 @@ import Demo from './pages/DemoLogin'
 import Signup from './pages/Signup'
 import Queue from './pages/Queue'
 import Favorites from './pages/Favorites';
+import Shelf from './pages/Shelf';
 import './app.css';
 
 import React from 'react';
@@ -49,6 +50,7 @@ function App() {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/queue" component={Queue} />
             <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/shelf" component={Shelf} />
             <Route exact path="/demo" component={Demo} />
             <Route render={() => <h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
           </Switch>

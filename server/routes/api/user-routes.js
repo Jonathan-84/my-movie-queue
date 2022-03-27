@@ -2,7 +2,7 @@ const router = require("express").Router();
 const {
   createUser,
   getOneUser,
-  savedMovie,
+  saveMovie,
   deleteMovie,
   login,
 } = require("../../controllers/user-controller");
@@ -11,7 +11,7 @@ const {
 const { authMiddleware } = require("../../utils/auth");
 
 // send a token for verification of user
-router.route("/").post(createUser).put(authMiddleware, savedMovie);
+router.route("/").post(createUser).put(authMiddleware, saveMovie);
 
 router.route("/login").post(login);
 

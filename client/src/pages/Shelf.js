@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 
 
-function Favorites() {
+function Shelf() {
 
  
     const { username: userParam } = useParams();
@@ -22,15 +22,15 @@ function Favorites() {
         <>
         <div className="main-container">
             <div className="add-margin">
-            <h1 className="title-text"> {me.username}'s <span className="secondary-color bold-text"> FAVORITES</span></h1>
+            <h1 className="title-text"> {me.username}'s <span className="secondary-color bold-text"> Shelf</span></h1>
             </div>
             <QueueNav />
             <div className="results-container add-top-margin">
-                <h2 className="center">Favorites list will be here</h2>
+                <h2 className="center">Movies I own</h2>
             </div>
         </div>
         </>
     )
 }
 
-export default Favorites;
+export default Shelf;

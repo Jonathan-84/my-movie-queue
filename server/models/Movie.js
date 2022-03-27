@@ -13,7 +13,7 @@ const movieSchema = new Schema({
     required: true,
   },
 
-  movie_id: {
+  movieId: {
     type: String,
     required: true,
   },
