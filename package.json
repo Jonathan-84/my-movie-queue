@@ -3,6 +3,9 @@
 	"description": "",
 	"version": "1.0.0",
 	"main": "index.js",
+	"engines": {
+		"node": "16.x"
+	  },
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start:prod": "cd server && npm start",
@@ -13,14 +16,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/kesiahp18/my-movie-queue.git"
+		"url": "git@github.com:Jonathan-84/my-movie-queue.git"
 	},
 	"author": "",
 	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/kesiahp18/my-movie-queue/issues"
-	},
-	"homepage": "https://github.com/kesiahp18/my-movie-queue#readme",
 	"dependencies": {
 		"concurrently": "^6.0.2"
 	}
