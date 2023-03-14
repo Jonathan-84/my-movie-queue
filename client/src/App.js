@@ -7,6 +7,7 @@ import Demo from './pages/DemoLogin'
 import Signup from './pages/Signup'
 import Queue from './pages/Queue'
 import Favorites from './pages/Favorites';
+import Shelf from './pages/Shelf';
 import './app.css';
 
 import React from 'react';
@@ -16,7 +17,7 @@ import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
-require('dotenv').config()
+// require('dotenv').config()
 
 //this key is showing up just fine
 //console.log(process.env.REACT_APP_TMD_API_KEY)
@@ -47,7 +48,8 @@ function App() {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/queue" component={Queue} />
             <Route exact path="/favorites" component={Favorites} />
-            <Route exact path="/demo" component={Demo} />
+            <Route exact path="/shelf" component={Shelf} />
+            <Route exact path="/🎃" component={Demo} />
             <Route render={() => <h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
           </Switch>
         </>

@@ -5,9 +5,8 @@
   "main": "server.js",
   "engines": {
     "node": "16.x"
-},
+  },
   "scripts": {
-    "test": "echo \"Error: no test speciflsied\" && exit 1",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
@@ -15,10 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^2.22.1",
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "graphql": "^15.5.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.12.3",
     "nodemon": "^2.0.7"
   }

@@ -42,13 +42,13 @@ const resolvers = {
       return { token, user };
     },
 
-    savedMovie: async (parent, {input}, context) => {
+    saveMovie: async (parent, {input}, context) => {
       if (context.user) {
         console.log(context.user);
         console.log(input);
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedMovie: input } },
+          { $addToSet: { savedMovies: input } },
           { new: true }
         );
         return updatedUser;
@@ -59,7 +59,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedMovie: { movie_id: movieId }} },
+          { $pull: { savedMovies: { movieId: movieId }} },
           { new: true }
         );
         return updatedUser;

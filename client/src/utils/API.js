@@ -51,7 +51,7 @@ export const deleteMovie = (movieId, token) => {
     },
   });
 };
-/*
+
 const baseUrl = 'https://api.themoviedb.org/3/';
             const api_key = 'process.env.REACT_APP_TMD_API_KEY';
         // tested and worked  // const movie = "Avengers";
@@ -60,4 +60,5 @@ const baseUrl = 'https://api.themoviedb.org/3/';
 export const searchMovies = (query) => {
   return fetch(`${baseUrl}search/movie?api_key=${api_key}&query=${query}`);
 };
-*/
+
+console.log (searchMovies)

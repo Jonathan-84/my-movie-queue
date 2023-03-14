@@ -1,16 +1,93 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import Auth from '../utils/auth';
+// import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
-//import { Button } from 'react-bootstrap';
+// import { saveMovieIds, getSavedMovieIds } from '../utils/localStorage';
 
-
+// // integrate Apollo Hooks
+// import { SAVE_MOVIE } from '../utils/mutations';
+// import {useMutation} from '@apollo/react-hooks';
 
 class MovieDisplay extends Component {
-    viewSite() {
-        console.log('this is connected')
-        const url = "https://www.themoviedb.org/movie/" + this.props.movie.id 
-        window.location.href = url
-        console.log(window.location.href)
+
+  constructor(props) {
+    super(props)
+    this.state= {
+
+    }
+  }
+
+ /*Experimenting with save function
+ 
+ 
+ useEffect(() => {
+    return () => saveBookIds(savedBookIds);
+});
+
+  // use mutation
+  const [saveMovie] = useMutation(SAVE_MOVIE);
+
+   handleSaveMovie = async (movieId) => {
+    // find the book in `searchedBooks` state by the matching id
+    const book = this.props.movie.find((movie) => movie.movieId === movieId);
+
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+     const{data}= await saveMovie({
+        variables: { input: {...movie} }
+      });
+
+      // if book successfully saves to user's account, save book id to state
+      setSavedMovieIds([...savedMovieIds, movie.movieId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+*/
+  viewSite() {
+    console.log('this is connected')
+    const url = "https://www.themoviedb.org/movie/" + this.props.movie.id
+    window.location.href = url
+    console.log(window.location.href)
+}
+
+/// this is getting to the api info
+    viewTrailer() {
+      const api_key = process.env.REACT_APP_TMD_API_KEY;
+    const movieID= this.props.movie.id
+     // console.log(trailerURL)
+//console.log(api_key)
+  const trailerAPI= "https://api.themoviedb.org/3/movie/" + movieID + "/videos?api_key=" + api_key + "&language=en-US"
+      
+  fetch(trailerAPI).then(function(response) {
+    // Pass the data from the first fetch
+    return response.json(); 
+  }).then(function(response) {
+    console.log(response.data);
+    //Make a variable of the value wanted from the first api call
+    for (var i = 0; i < response.data.length; i ++) {
+        if (response.data[i].results[0].type === "Trailer"
+          ) {
+            // use jquery to append or add fullName to modal
+            let youtubeKey= response.data[i].results[0].key;
+            // store park code or if possible assign it as a value to the fullName
+            //if so, I can then do a separate fetch on the click that uses the parkCode to extract needed data
+
+
+            console.log(youtubeKey);
+        }
+    }
+  })
+  
+  
+  
+  //window.location.href = trailerURL
     }
 
 
@@ -45,10 +122,11 @@ class MovieDisplay extends Component {
                     <ul className="dropdown-menu queue-button">
                     <li  className="queue-button text-light" onClick={this.watchlistAlert}>Add to Watchlist!</li>
                     <li  className="queue-button text-light" onClick={this.favoritesAlert}>Add to My Favorites!</li>
+                   {/*} <li  className="queue-button text-light" onClick={this.viewTrailer}>Watch Trailer!</li>*/}
                      {/*} <li><a href="#">Save to My Movie Shelf</a></li>{*/}
                     </ul>
                     <input className="btn queue-button text-light" type="viewSite" onClick={this.viewSite.bind(this)} value="More Info"/>
-                  {/* <input className="btn queue-button text-light" type="viewTrailer" onClick={this.viewTrailer.bind(this)} value="Trailer"/>*/}
+                  <input className="btn queue-button text-light" type="viewTrailer" onClick={this.viewTrailer.bind(this)} value="Trailer"/>
                   </div>
                /*} <>
                   <Button className='btn-block btn-info'> Save to Watchlist</Button>

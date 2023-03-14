@@ -2,12 +2,12 @@
 	"name": "my-movie-q",
 	"description": "",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "server/server.js",
 	"engines": {
-        "node": "16.x"
-    },
+		"node": "16.x",
+		"npm": "8.x"
+	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"start:prod": "cd server && npm start",
 		"install": "cd server && npm i && cd ../client && npm i",
 		"start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
@@ -22,6 +22,7 @@
 	"license": "ISC",
 	"homepage": "https://my-movie-q.herokuapp.com/",
 	"dependencies": {
+		"bcryptjs": "^2.4.3",
 		"concurrently": "^6.0.2"
 	}
 }
