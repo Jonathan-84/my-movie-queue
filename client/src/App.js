@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from './components/Nav'
-import Search from './components/search'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Demo from './pages/DemoLogin'
@@ -46,12 +45,11 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/🎃" component={Search} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/queue" component={Queue} />
             <Route exact path="/favorites" component={Favorites} />
             <Route exact path="/shelf" component={Shelf} />
-            <Route exact path="/demo" component={Demo} />
+            <Route exact path="/🎃" component={Demo} />
             <Route render={() => <h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
           </Switch>
         </>

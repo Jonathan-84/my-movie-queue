@@ -13,6 +13,8 @@ export const LOGIN_USER = gql`
           movieId
           title
           overview
+          image
+          link
         }
       }
     }
@@ -32,6 +34,8 @@ export const ADD_USER = gql`
           movieId
           title
           overview
+          image
+          link
         }
       }
     }
@@ -48,6 +52,8 @@ export const SAVE_MOVIE = gql`
         movieId
         title 
         overview
+        image
+        link
       }
     }
   }
@@ -64,6 +70,8 @@ export const REMOVE_MOVIE = gql`
         movieId
         title 
         overview
+        image
+        link
       }
     }
   }

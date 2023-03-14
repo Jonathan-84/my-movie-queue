@@ -1,8 +1,55 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import Auth from '../utils/auth';
+import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+
+import { saveMovieIds, getSavedMovieIds } from '../utils/localStorage';
+
+// integrate Apollo Hooks
+import { SAVE_MOVIE } from '../utils/mutations';
+import {useMutation} from '@apollo/react-hooks';
 
 class MovieDisplay extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state= {
+
+    }
+  }
+
+ /*Experimenting with save function
+ 
+ 
+ useEffect(() => {
+    return () => saveBookIds(savedBookIds);
+});
+
+  // use mutation
+  const [saveMovie] = useMutation(SAVE_MOVIE);
+
+   handleSaveMovie = async (movieId) => {
+    // find the book in `searchedBooks` state by the matching id
+    const book = this.props.movie.find((movie) => movie.movieId === movieId);
+
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+     const{data}= await saveMovie({
+        variables: { input: {...movie} }
+      });
+
+      // if book successfully saves to user's account, save book id to state
+      setSavedMovieIds([...savedMovieIds, movie.movieId]);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+*/
   viewSite() {
     console.log('this is connected')
     const url = "https://www.themoviedb.org/movie/" + this.props.movie.id

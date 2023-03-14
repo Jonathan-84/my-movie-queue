@@ -10,9 +10,13 @@ const movieSchema = new Schema({
   ],
   overview: {
     type: String,
-    required: true,
   },
-
+  image: {
+    type: String,
+  },
+  link: {
+    type: String,
+  },
   movieId: {
     type: String,
     required: true,

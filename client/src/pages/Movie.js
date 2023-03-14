@@ -7,7 +7,9 @@ class Movie extends Component {
 
     constructor(props) {
         super(props)
-        this.state= {}
+        this.state= {
+
+        }
 
         // Fetch data from moviedb API
         this.performSearch("")
@@ -15,7 +17,7 @@ class Movie extends Component {
 
         
 
-        performSearch(searchMovie){
+      performSearch(searchMovie){
             // Use Ajax to use async calls to fetch data from web 
             // replace "search" with "discover" for random selection
             const api_key = process.env.REACT_APP_TMD_API_KEY;
@@ -44,12 +46,16 @@ class Movie extends Component {
             })
     }
 
-    searchChangeHandler(e) {
-      //  const bound = this
-        const searchMovie = e.target.value
-        this.performSearch(searchMovie)
-    }
-    
+    // searchChangeHandler(e) {
+    //   //  const bound = this
+    //     const searchMovie = e.target.value
+    //     this.performSearch(searchMovie)
+    // }
+    handleFormSubmit = async (event) => {
+   
+        //   const response = await searchMovies(this.searchInput);
+        this.performSearch(this.state.searchInput)
+      };
 
     render() {
         return (
@@ -57,10 +63,12 @@ class Movie extends Component {
             <div className="input-group">
                 <input id='search' type="search-input" 
                     className="form-control rounded searchbar" 
-                    onChange={this.searchChangeHandler.bind(this)} placeholder="Search for movies..." 
+                    onChange={(e) => this.setState({searchInput:e.target.value})}
+                    value={this.state.searchInput}
+                    placeholder="Search for movies..." 
                     aria-label="Search"
                     aria-describedby="search-addon" />
-            <button id='search'  type="button" className="btn btn-outline orange-button">Search</button>
+            <button id='search'  type="button" className="btn btn-outline orange-button" onClick={this.handleFormSubmit}>Search</button>
             </div>
             <div className="Test">
                 {this.state.rows}

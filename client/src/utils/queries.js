@@ -25,6 +25,8 @@ export const GET_ME = gql`
         movieId
         title
         overview
+        image
+        link
       }
     }
     

@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 function QueueNav() {
+
+    
     return (
         <div className="queue-nav">
             <Link to="/favorites" className="orange-button link-text bold-text queue-link">My Favorites</Link>
