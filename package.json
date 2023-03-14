@@ -2,7 +2,7 @@
 	"name": "my-movie-q",
 	"description": "",
 	"version": "1.0.0",
-	"main": "index.js",
+	"main": "server/server.js",
 	"engines": {
 		"node": "16.x",
 		"npm": "8.x"
