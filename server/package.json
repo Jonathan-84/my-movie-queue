@@ -7,7 +7,6 @@
     "node": "16.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test speciflsied\" && exit 1",
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
