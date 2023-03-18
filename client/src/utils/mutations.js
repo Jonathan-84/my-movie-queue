@@ -15,6 +15,7 @@ export const LOGIN_USER = gql`
           overview
           image
           link
+          list
         }
       }
     }
@@ -36,6 +37,7 @@ export const ADD_USER = gql`
           overview
           image
           link
+          list
         }
       }
     }
@@ -54,6 +56,7 @@ export const SAVE_MOVIE = gql`
         overview
         image
         link
+        list
       }
     }
   }
@@ -72,6 +75,7 @@ export const REMOVE_MOVIE = gql`
         overview
         image
         link
+        list
       }
     }
   }

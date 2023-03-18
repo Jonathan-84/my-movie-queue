@@ -14,7 +14,7 @@ const movieSchema = new Schema({
   image: {
     type: String,
   },
-  link: {
+  list: {
     type: String,
   },
   movieId: {

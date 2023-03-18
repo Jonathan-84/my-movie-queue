@@ -1,5 +1,7 @@
 import React, { useState, useEffect, Component } from 'react';
+import { searchTrailer } from '../utils/API';
 import Auth from '../utils/auth';
+import noposter from "../images/posternull.png";
 // import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 // import { saveMovieIds, getSavedMovieIds } from '../utils/localStorage';
@@ -13,83 +15,95 @@ class MovieDisplay extends Component {
   constructor(props) {
     super(props)
     this.state= {
+      movie:[]
 
     }
   }
 
- /*Experimenting with save function
+ //Experimenting with save function
  
  
- useEffect(() => {
-    return () => saveBookIds(savedBookIds);
-});
+//  useEffect(() => {
+//     return () => saveBookIds(savedBookIds);
+// });
 
-  // use mutation
-  const [saveMovie] = useMutation(SAVE_MOVIE);
+ 
 
-   handleSaveMovie = async (movieId) => {
-    // find the book in `searchedBooks` state by the matching id
-    const book = this.props.movie.find((movie) => movie.movieId === movieId);
+//    handleSaveMovie = async (movieId,setSavedMovieIds, savedMovieIds) => {
+//      // use mutation
+//  const [saveMovie] = useMutation(SAVE_MOVIE);
+//     // find the book in `searchedBooks` state by the matching id
+//     const movie = this.props.movie.find((movie) => movie.movieId === movieId);
 
-    // get token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+//     // get token
+//     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (!token) {
-      return false;
-    }
+//     if (!token) {
+//       return false;
+//     }
 
-    try {
-     const{data}= await saveMovie({
-        variables: { input: {...movie} }
-      });
+//     try {
+//      const{data}= await saveMovie({
+//         variables: { input: {...movie, list:"Shelf"} }
+//       });
 
-      // if book successfully saves to user's account, save book id to state
-      setSavedMovieIds([...savedMovieIds, movie.movieId]);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-*/
+//       // if book successfully saves to user's account, save book id to state
+//       setSavedMovieIds([...savedMovieIds, movie.movieId,]);
+//     } catch (err) {
+//       console.error(err);
+//     }
+//     console.log(savedMovieIds)
+//   };
+
+
   viewSite() {
     console.log('this is connected')
     const url = "https://www.themoviedb.org/movie/" + this.props.movie.id
-    window.location.href = url
-    console.log(window.location.href)
+    // window.location.href = url
+     window.open( url, '_blank');
+  
+    // console.log(window.location.href)
 }
 
 /// this is getting to the api info
-    viewTrailer() {
-      const api_key = process.env.REACT_APP_TMD_API_KEY;
+   async viewTrailer() {
+      // const api_key = process.env.REACT_APP_TMD_API_KEY;
     const movieID= this.props.movie.id
-     // console.log(trailerURL)
-//console.log(api_key)
-  const trailerAPI= "https://api.themoviedb.org/3/movie/" + movieID + "/videos?api_key=" + api_key + "&language=en-US"
-      
-  fetch(trailerAPI).then(function(response) {
-    // Pass the data from the first fetch
-    return response.json(); 
-  }).then(function(response) {
-    console.log(response.data);
-    //Make a variable of the value wanted from the first api call
-    for (var i = 0; i < response.data.length; i ++) {
-        if (response.data[i].results[0].type === "Trailer"
-          ) {
-            // use jquery to append or add fullName to modal
-            let youtubeKey= response.data[i].results[0].key;
-            // store park code or if possible assign it as a value to the fullName
-            //if so, I can then do a separate fetch on the click that uses the parkCode to extract needed data
+ 
+     const trailerCall =searchTrailer(movieID);
+     console.log(trailerCall)
+       
+     
+    fetch(trailerCall).then(function(response) {
+      // Pass the data from the first fetch
+      return response.json(); 
+    }).then(function(response) {
+      //Make a variable of the value wanted from the first api call
+      for (var i = 0; i < response.results.length; i ++) {
+          if (response.results[i].type === "Trailer" && 
+              response.results[i].site === "YouTube" && 
+              response.results[i].official === true
+              ) {
+              // use jquery to append or add fullName to modal
+              var keyName= response.results[i].key;
+              var siteName= response.results[i].name;
 
-
-            console.log(youtubeKey);
-        }
+   console.log(keyName, siteName)
+      }
     }
+           const trailerURL="https://www.youtube.com/watch?v=" + keyName 
+
+           if (keyName === undefined)
+           {
+alert("No Trailer Available")
+           }
+           else
+          { window.open( trailerURL, '_blank');
+          }
   })
-  
-  
-  
-  //window.location.href = trailerURL
-    }
 
+      }
+  
 
     watchlistAlert=()=>{
       alert('Add to Watchlist is a Coming Attraction!');
@@ -109,7 +123,11 @@ class MovieDisplay extends Component {
         <tbody>
             <tr className="movie-container text-center">
                 <td>
-                <img className="image" alt="poster" src={this.props.movie.poster_src}/>
+                {this.props.movie.poster_src !== "https://image.tmdb.org/t/p/w300null" ? (
+                    <img className="image" alt="poster" src={this.props.movie.poster_src}/>
+                  ):( 
+                  <img className="image" alt="noposter" width='300' src={noposter}/>
+                  )}
                 </td>
                 <td className="title-description">
                 <h3>{this.props.movie.title}</h3>

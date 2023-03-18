@@ -51,9 +51,13 @@ class Movie extends Component {
     //     const searchMovie = e.target.value
     //     this.performSearch(searchMovie)
     // }
+
+    handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.performSearch(this.state.searchInput)
+        }
+    }
     handleFormSubmit = async (event) => {
-   
-        //   const response = await searchMovies(this.searchInput);
         this.performSearch(this.state.searchInput)
       };
 
@@ -62,7 +66,8 @@ class Movie extends Component {
             <>
             <div className="input-group">
                 <input id='search' type="search-input" 
-                    className="form-control rounded searchbar" 
+                    className="form-control rounded searchbar"
+                    onKeyUp={this.handleKeyPress.bind(this)}
                     onChange={(e) => this.setState({searchInput:e.target.value})}
                     value={this.state.searchInput}
                     placeholder="Search for movies..." 

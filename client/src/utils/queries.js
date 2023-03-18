@@ -24,6 +24,7 @@ export const GET_ME = gql`
       savedMovies {
         movieId
         title
+        list
         overview
         image
         link
