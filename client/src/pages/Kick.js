@@ -21,7 +21,7 @@ const Kick = () => {
 
   const me = data?.me || {};
 
-  console.log(me)
+  // console.log(me)
 
     return (
       <>

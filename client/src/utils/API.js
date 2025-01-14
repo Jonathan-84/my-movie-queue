@@ -127,4 +127,4 @@ export const searchTrailer = (movieID) => {
   return (`${baseUrl}movie/${movieID}/videos?api_key=${api_key}&language=en-US`);
 };
 
-console.log (searchMovies)
+// console.log (searchMovies)

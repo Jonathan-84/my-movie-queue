@@ -58,8 +58,8 @@ const resolvers = {
     },
     shelveMovie: async (parent, {input}, context) => {
       if (context.user) {
-        console.log(context.user);
-        console.log(input);
+        // console.log(context.user);
+        // console.log(input);
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $addToSet: { shelvedMovies: input } },

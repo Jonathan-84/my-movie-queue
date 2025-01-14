@@ -50,7 +50,7 @@ module.exports = {
   },
   // update the saved
   async shelveMovie({ user, body }, res) {
-    console.log(user);
+    // console.log(user);
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: user._id },
@@ -59,14 +59,14 @@ module.exports = {
       );
       return res.json(updatedUser);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       return res.status(400).json(err);
     }
   },
 
     // update the saved
     async queueMovie({ user, body }, res) {
-      console.log(user);
+      // console.log(user);
       try {
         const updatedUser = await User.findOneAndUpdate(
           { _id: user._id },
@@ -75,13 +75,13 @@ module.exports = {
         );
         return res.json(updatedUser);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         return res.status(400).json(err);
       }
     },
         // update the saved
         async getMovie({ user, body }, res) {
-          console.log(user);
+          // console.log(user);
           try {
             const updatedUser = await User.findOneAndUpdate(
               { _id: user._id },
@@ -90,14 +90,14 @@ module.exports = {
             );
             return res.json(updatedUser);
           } catch (err) {
-            console.log(err);
+            // console.log(err);
             return res.status(400).json(err);
           }
         },
 
             // update the saved
     async thatMovie({ user, body }, res) {
-      console.log(user);
+      // console.log(user);
       try {
         const updatedUser = await User.findOneAndUpdate(
           { _id: user._id },
@@ -106,7 +106,7 @@ module.exports = {
         );
         return res.json(updatedUser);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         return res.status(400).json(err);
       }
     },

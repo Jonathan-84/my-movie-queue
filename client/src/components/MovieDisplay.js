@@ -21,7 +21,7 @@ const MovieDisplay = (props) => {
   const [gthMovie] = useMutation(GET_MOVIE);
 
   const viewSite = () => {
-    console.log('this is connected');
+    // console.log('this is connected');
     const url = "https://www.themoviedb.org/movie/" + props.movie.id;
     const site= url;
     window.open(url, '_blank');
@@ -32,7 +32,7 @@ const MovieDisplay = (props) => {
   const fetchTrailerKey = async () => {
     const movieID = props.movie.id;
     const trailerCall = searchTrailer(movieID);
-    console.log(trailerCall);
+    // console.log(trailerCall);
 
     fetch(trailerCall).then(response => response.json())
       .then(response => {
@@ -45,7 +45,7 @@ const MovieDisplay = (props) => {
               response.results[i].official === true) {
             keyName = response.results[i].key;
             siteName = response.results[i].name;
-            console.log(keyName, siteName);
+            // console.log(keyName, siteName);
             
           }
         }
@@ -80,10 +80,11 @@ const MovieDisplay = (props) => {
   trailer: trailerID // String
 };
  try { 
-  console.log(movie)
+  // console.log(movie)
   const { data } = await shelveMovie({ 
   variables: { input: { ...movieData } } }); 
-  alert('Movie added to your shelf!'); } 
+  // alert('Movie added to your shelf!'); 
+} 
   catch (error) { 
     console.error('Error saving movie to shelf:', error); 
     alert('Failed to add movie to shelf'); 
@@ -99,10 +100,11 @@ const MovieDisplay = (props) => {
       trailer: trailerID // String
     };
      try { 
-      console.log(movie)
+      // console.log(movie)
       const { data } = await queueMovie({ 
       variables: { input: { ...movieData } } }); 
-      alert('Movie added to your queue!'); } 
+      // alert('Movie added to your queue!'); 
+    } 
       catch (error) { 
         console.error('Error saving movie to queue:', error); 
         alert('Failed to add movie to queue'); 
@@ -118,10 +120,11 @@ const MovieDisplay = (props) => {
           trailer: trailerID // String
         };
          try { 
-          console.log(movie)
+          // console.log(movie)
           const { data } = await kickMovie({ 
           variables: { input: { ...movieData } } }); 
-          alert('Movie added to your queue!'); } 
+          // alert('Movie added to your queue!'); 
+        } 
           catch (error) { 
             console.error('Error saving movie to queue:', error); 
             alert('Failed to add movie to queue'); 
@@ -137,10 +140,11 @@ const MovieDisplay = (props) => {
               trailer: trailerID // String
             };
              try { 
-              console.log(movie)
+              // console.log(movie)
               const { data } = await gthMovie({ 
               variables: { input: { ...movieData } } }); 
-              alert('Movie added to your queue!'); } 
+              // alert('Movie added to your queue!');
+            } 
               catch (error) { 
                 console.error('Error saving movie to queue:', error); 
                 alert('Failed to add movie to queue'); 

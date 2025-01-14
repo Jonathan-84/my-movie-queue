@@ -8,7 +8,7 @@ import { useMutation } from '@apollo/react-hooks';
 const FlipCardMovie = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
-  console.log(movie);
+  // console.log(movie);
 
   const [removeQueuedMovie] = useMutation(REMOVE_QUEUED_MOVIE);
   const [removeShelvedMovie] = useMutation(REMOVE_SHELVED_MOVIE);
@@ -29,7 +29,7 @@ const FlipCardMovie = ({ movie }) => {
     const type = movie.__typename;
     try {
       let data;
-      console.log(movie.__typename);
+      // console.log(movie.__typename);
 
       switch (type) {
         case 'shelvedMovie':
@@ -48,11 +48,11 @@ const FlipCardMovie = ({ movie }) => {
           throw new Error('Unknown movie type');
       }
 
-      console.log(_id);
-      alert('Deleted!');
+      // console.log(_id);
+      // alert('Deleted!');
     } catch (error) {
       console.error('Error saving movie to watchlist:', error);
-      console.log(_id);
+      // console.log(_id);
       alert('Failed to add movie to watchlist');
     }
   };
@@ -60,7 +60,7 @@ const FlipCardMovie = ({ movie }) => {
   const changeCollection = async (updateCollection) => {
     const _id = movie._id; // Should be a string
     const currentType = movie.__typename;
-    console.log(movie)
+    // console.log(movie)
 
     const movieData = { 
       movieId: movie.movieId, // Should be a string 
@@ -91,8 +91,8 @@ const FlipCardMovie = ({ movie }) => {
           throw new Error('Unknown movie type');
       }
 
-      console.log(_id);
-      alert('Collection updated!');
+      // console.log(_id);
+      // alert('Collection updated!');
     } catch (error) {
       console.error('Error updating collection:', error);
       alert('Failed to update collection');
