@@ -37,6 +37,6 @@ app.use(routes);
 
 db.once("open", () => {
   app.listen(PORT, () =>
-    // console.log(`Listening on localhost:${PORT}${server.graphqlPath}`)
+    console.log(`Listening on localhost:${PORT}${server.graphqlPath}`)
   );
 });
