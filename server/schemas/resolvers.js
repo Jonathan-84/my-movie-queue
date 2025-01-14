@@ -42,30 +42,109 @@ const resolvers = {
       return { token, user };
     },
 
-    saveMovie: async (parent, {input}, context) => {
+    queueMovie: async (parent, {input}, context) => {
       if (context.user) {
-        console.log(context.user);
-        console.log(input);
+        // console.log(context.user);
+        // console.log(input);
+        
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedMovies: input } },
+          { $addToSet: { queuedMovies: input } },
           { new: true }
         );
         return updatedUser;
       }
       throw new AuthenticationError("Please log in!");
     },
-    removeMovie: async (parent, {movieId}, context) => {
+    shelveMovie: async (parent, {input}, context) => {
       if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
+        console.log(context.user);
+        console.log(input);
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedMovies: { movieId: movieId }} },
+          { $addToSet: { shelvedMovies: input } },
           { new: true }
         );
         return updatedUser;
       }
       throw new AuthenticationError("Please log in!");
-    }
+    },
+
+    thatMovie: async (parent, {input}, context) => {
+      if (context.user) {
+        // console.log(context.user);
+        // console.log(input);
+        
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { kickMovies: input } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Please log in!");
+    },
+
+    getMovie: async (parent, {input}, context) => {
+      if (context.user) {
+        // console.log(context.user);
+        // console.log(input);
+        
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { getMovies: input } },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Please log in!");
+    },
+    
+
+    removeQueuedMovie: async (parent, {_id}, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { queuedMovies: { _id   }} },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Please log in!");
+    },
+    removeShelvedMovie: async (parent, {_id}, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { shelvedMovies: { _id }} },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Please log in!");
+    },
+    removeThatMovie: async (parent, {_id}, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { kickMovies: { _id   }} },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Please log in!");
+    },
+    removeGetMovie: async (parent, {_id}, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { getMovies: { _id   }} },
+          { new: true }
+        );
+        return updatedUser;
+      }
+      throw new AuthenticationError("Please log in!");
+    },
   }
 }
 module.exports = resolvers;

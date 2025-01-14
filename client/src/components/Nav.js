@@ -19,13 +19,15 @@ function Nav(props) {
                     {Auth.loggedIn() ? (
                 <>
                 <Link to="/" className="link-text bold-text add-padding main-link">Home</Link>
-                  <Link to="/queue" className="link-text bold-text add-padding main-link">Collections</Link>
+                  <Link to="/collections" className="link-text bold-text add-padding main-link">Collections</Link>
+                  <Link to="/credits" className="link-text bold-text add-padding main-link">Credits</Link>
                   <Link onClick={Auth.logout}className="link-text bold-text add-padding main-link">Logout</Link>
                 </>
               ) : (
                   <>
                 <Link to="/" className="link-text bold-text add-padding main-link">Home</Link>
                 <Link to="/login" className="link-text bold-text add-padding main-link">Log in</Link>
+                <Link to="/credits" className="link-text bold-text add-padding main-link">Credits</Link>
                 </>
               )}
                 </ul>

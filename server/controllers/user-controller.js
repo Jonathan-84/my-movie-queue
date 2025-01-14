@@ -49,12 +49,12 @@ module.exports = {
     res.json({ token, user });
   },
   // update the saved
-  async saveMovie({ user, body }, res) {
+  async shelveMovie({ user, body }, res) {
     console.log(user);
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: user._id },
-        { $addToSet: { savedMovies: body } },
+        { $addToSet: { shelvedMovies: body } },
         { new: true, runValidators: true }
       );
       return res.json(updatedUser);
@@ -63,12 +63,98 @@ module.exports = {
       return res.status(400).json(err);
     }
   },
+
+    // update the saved
+    async queueMovie({ user, body }, res) {
+      console.log(user);
+      try {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: user._id },
+          { $addToSet: { queuedMovies: body } },
+          { new: true, runValidators: true }
+        );
+        return res.json(updatedUser);
+      } catch (err) {
+        console.log(err);
+        return res.status(400).json(err);
+      }
+    },
+        // update the saved
+        async getMovie({ user, body }, res) {
+          console.log(user);
+          try {
+            const updatedUser = await User.findOneAndUpdate(
+              { _id: user._id },
+              { $addToSet: { getMovies: body } },
+              { new: true, runValidators: true }
+            );
+            return res.json(updatedUser);
+          } catch (err) {
+            console.log(err);
+            return res.status(400).json(err);
+          }
+        },
+
+            // update the saved
+    async thatMovie({ user, body }, res) {
+      console.log(user);
+      try {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: user._id },
+          { $addToSet: { kickMovies: body } },
+          { new: true, runValidators: true }
+        );
+        return res.json(updatedUser);
+      } catch (err) {
+        console.log(err);
+        return res.status(400).json(err);
+      }
+    },
   // remove a movie
   //movie id below
-  async deleteMovie({ user, params }, res) {
+  async deleteQueuedMovie({ user, params }, res) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: user._id },
-      { $pull: { savedMovies: { movieId: params.movieId } } },
+      { $pull: { queuedMovies: { _id: params._id } } },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return res
+        .status(404)
+        .json({ message: "Couldn't find user with this id!" });
+    }
+    return res.json(updatedUser);
+  },
+  async deleteShelvedMovie({ user, params }, res) {
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: user._id },
+      { $pull: { shelvedMovies: { _id: params._id } } },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return res
+        .status(404)
+        .json({ message: "Couldn't find user with this id!" });
+    }
+    return res.json(updatedUser);
+  },
+  async deleteThatMovie({ user, params }, res) {
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: user._id },
+      { $pull: { kickMovies: { _id: params._id } } },
+      { new: true }
+    );
+    if (!updatedUser) {
+      return res
+        .status(404)
+        .json({ message: "Couldn't find user with this id!" });
+    }
+    return res.json(updatedUser);
+  },
+  async deleteGetMovie({ user, params }, res) {
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: user._id },
+      { $pull: { getMovies: { _id: params._id } } },
       { new: true }
     );
     if (!updatedUser) {

@@ -2,29 +2,63 @@ const { gql } = require("apollo-server-express");
 
 // create typeDefs
 const typeDefs = gql`
-  type Movie {
-    list:String
-    movieId: ID!
-    title: String!
+  type shelvedMovie {
+  _id: ID!
+    movieId: String
+    title: String
     overview: String
-    image: String
+    poster: String
     link: String
+    trailer: String
   }
+
+   type getMovie {
+  _id: ID!
+    movieId: String
+    title: String
+    overview: String
+    poster: String
+    link: String
+    trailer: String
+  }
+
+   type thatMovie {
+  _id: ID!
+    movieId: String
+    title: String
+    overview: String
+    poster: String
+    link: String
+    trailer: String
+  }
+    type queuedMovie {
+    _id: ID!
+    movieId: String
+    title: String
+    overview: String
+    poster: String
+    link: String
+    trailer: String
+  }
+    
   type User {
-    _id: ID
+    _id: ID!
     username: String
     email: String!
     movieCount: Int
-    savedMovies: [Movie]
+    queuedMovies: [queuedMovie]
+    shelvedMovies: [shelvedMovie]
+     kickMovies: [thatMovie]
+      getMovies: [getMovie]
   }
+
   input movieInput {
-    movieId: ID!
+    movieId: String
     title: String
-    image: String
-    link: String
-    list: String
     overview: String
-    
+    poster: String
+    link: String
+    trailer: String
   }
 
   type Auth {
@@ -38,8 +72,14 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    saveMovie(input: movieInput!): User
-    removeMovie(movieId: ID!): User
+    queueMovie(input: movieInput!): User
+    shelveMovie(input: movieInput!): User
+    thatMovie(input: movieInput!): User
+    getMovie(input: movieInput!): User
+    removeQueuedMovie(_id: ID!): User
+    removeShelvedMovie(_id: ID!): User
+    removeThatMovie(_id: ID!): User
+    removeGetMovie(_id: ID!): User
   }
 `;
 

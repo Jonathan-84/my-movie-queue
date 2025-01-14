@@ -2,7 +2,10 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 // import schema from movie.js
-const movieSchema = require("./Movie");
+const shelvedMovieSchema = require("./shelvedMovie.js");
+const queuedMovieSchema = require("./queuedMovie.js");
+const kickMovieSchema = require("./kickMovies.js");
+const getMovieSchema = require("./getMovies.js");
 
 const userSchema = new Schema(
   {
@@ -22,7 +25,10 @@ const userSchema = new Schema(
       required: true,
     },
     // set savedMovies to be an array of data that adheres to the movieSchema
-    savedMovies: [movieSchema],
+    queuedMovies: [queuedMovieSchema],
+    shelvedMovies: [shelvedMovieSchema],
+    getMovies: [getMovieSchema],
+    kickMovies:[kickMovieSchema]
   },
   // set this to use virtual below
   {
@@ -49,7 +55,8 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 // when we query a user, we'll also get another field called `movieCount` with the number of saved movies we have
 userSchema.virtual("movieCount").get(function () {
-  return this.savedMovies.length;
+  let movieCount = this.queuedMovies.length + this.shelvedMovies.length
+  return movieCount;
 });
 
 const User = model("User", userSchema);

@@ -30,7 +30,7 @@ export const loginUser = (userData) => {
 
 // need to update for movies
 // save data for a logged in user
-export const saveMovie = (movieData, token) => {
+export const queueMovie = (movieData, token) => {
   return fetch('/api/users', {
     method: 'PUT',
     headers: {
@@ -41,9 +41,43 @@ export const saveMovie = (movieData, token) => {
   });
 };
 
+export const shelveMovie = (movieData, token) => {
+  return fetch('/api/users', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(movieData),
+  });
+};
+
+export const thatMovie = (movieData, token) => {
+  return fetch('/api/users', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(movieData),
+  });
+};
+
+export const getMovie = (movieData, token) => {
+  return fetch('/api/users', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(movieData),
+  });
+};
+
+
 // need to ypdate for movies
 // remove saved data for a logged in user
-export const deleteMovie = (movieId, token) => {
+export const removeQueuedMovie = (movieId, token) => {
   return fetch(`/api/users/movies/${movieId}`, {
     method: 'DELETE',
     headers: {
@@ -51,6 +85,34 @@ export const deleteMovie = (movieId, token) => {
     },
   });
 };
+
+export const removeShelvedMovie = (movieId, token) => {
+  return fetch(`/api/users/movies/${movieId}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const removeThatMovie = (movieId, token) => {
+  return fetch(`/api/users/movies/${movieId}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const removeGetMovie = (movieId, token) => {
+  return fetch(`/api/users/movies/${movieId}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 
 const baseUrl = 'https://api.themoviedb.org/3/';
             const api_key = process.env.REACT_APP_TMD_API_KEY;

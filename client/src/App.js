@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from './components/Nav'
 import Home from './pages/Home'
 import Login from './pages/Login'
+import Collections from './pages/Collections'
 import Demo from './pages/DemoLogin'
 import Signup from './pages/Signup'
 import Queue from './pages/Queue'
-import Favorites from './pages/Favorites';
+import Kick from './pages/Kick'
+import Get from './pages/Get'
+import Credits from './pages/Credits'
+// import Favorites from './pages/Favorites';
 import Shelf from './pages/Shelf';
 import './app.css';
 
@@ -45,9 +49,13 @@ function App() {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/credits" component={Credits} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/queue" component={Queue} />
-            <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/kick" component={Kick} />
+            <Route exact path="/get" component={Get} />
+            <Route exact path="/collections" component={Collections} />
+            {/* <Route exact path="/favorites" component={Favorites} /> */}
             <Route exact path="/shelf" component={Shelf} />
             <Route exact path="/🎃" component={Demo} />
             <Route render={() => <h1 className="title-text main-container">This Page Does Not Exist!</h1>} />
